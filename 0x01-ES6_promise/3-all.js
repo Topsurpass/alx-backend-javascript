@@ -9,5 +9,5 @@ export default async function handleProfileSignup() {
       console.log(output);
     })
     // Catch error if atleast one of the promise fails or rejects
-    .catch((error) => console.log(error));
+    .catch(() => console.log('Signup system offline'));
 }
