@@ -1,4 +1,4 @@
-//A funtion that return an array when all are promises are settled
+// A funtion that return an array when all are promises are settled
 // i.e either fulfilled or reject
 
 import signUpUser from './4-user-promise';

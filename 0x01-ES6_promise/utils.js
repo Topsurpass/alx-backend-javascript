@@ -1,4 +1,4 @@
-// Creating fake API, functions that returns promise 
+// Creating fake API, functions that returns promise
 // that resolves automatically
 
 export function uploadPhoto() {
