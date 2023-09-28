@@ -26,6 +26,8 @@ module.exports = {
       'WithStatement',
     ],
     'no-unused-vars': 'off',
+    'no-underscore-dangle': 'off',
+    'max-classes-per-file': ['error', 2],
   },
   overrides: [
     {
