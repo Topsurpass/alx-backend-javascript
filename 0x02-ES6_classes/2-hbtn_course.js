@@ -2,10 +2,16 @@
  * A class that verify the type of attributes during object creation
  */
 export default class HolbertonCourse {
+  /**
+   * Create and initialize new object
+   * @param {String} name 
+   * @param {Number} length 
+   * @param {String[]} students 
+   */
   constructor(name, length, students) {
-    this._name = name;
-    this._length = length;
-    this._students = students;
+    this.name = name;
+    this.length = length;
+    this.students = students;
   }
 
   get name() {
@@ -13,7 +19,7 @@ export default class HolbertonCourse {
   }
 
   set name(val) {
-    if (typeof (val) !== 'string') {
+    if (typeof val !== 'string') {
       throw new TypeError('Name must be a string');
     }
     this._name = val;
