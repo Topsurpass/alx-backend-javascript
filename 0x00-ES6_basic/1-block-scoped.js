@@ -1,4 +1,4 @@
-//Changed var to const
+// Changed var to const
 
 export default function taskBlock(trueOrFalse) {
   const task = false;
