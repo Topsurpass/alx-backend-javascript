@@ -4,9 +4,9 @@
 export default class HolbertonCourse {
   /**
    * Create and initialize new object
-   * @param {String} name 
-   * @param {Number} length 
-   * @param {String[]} students 
+   * @param {String} name
+   * @param {Number} length
+   * @param {String[]} students
    */
   constructor(name, length, students) {
     this.name = name;
