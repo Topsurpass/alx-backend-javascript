@@ -24,7 +24,7 @@ $ npm -v
 6.11.3
 ```
 ## Install Jest, Babel, and ESLint
-- In your project directory, I installed Jest, Babel and ESList by using the supplied package.json and running npm install.
+- In my project directory, I installed Jest, Babel and ESList by using the supplied package.json and running npm install.
 
 ## Project links
 - [Jest Testing Framework](https://jestjs.io/)
