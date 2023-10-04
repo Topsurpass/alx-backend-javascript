@@ -21,7 +21,7 @@ const secondStudent: Student = {
 const studentsList: Student[] = [firstStudent, secondStudent];
 
 export const renderTable = (studentsList: Array<Student>): void =>  {
-    // create table tag
+    // create new table, head row and the row labelling
     const table = document.createElement('table');
     const headRow = document.createElement('tr');
     table.insertAdjacentElement('beforeend', headRow);
@@ -38,6 +38,6 @@ export const renderTable = (studentsList: Array<Student>): void =>  {
     }
   
     document.body.insertAdjacentElement('beforeend', table);
-  }
+}
   
-  renderTable(studentsList);
+renderTable(studentsList);
