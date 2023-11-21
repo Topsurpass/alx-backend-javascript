@@ -42,9 +42,10 @@ const countStudents = (path) =>
 							", "
 						)}`
 					);
-                }
-                resolve();
+				}
+				resolve(true);
 			}
-        });       
+		});
 	});
+
 module.exports = countStudents;
