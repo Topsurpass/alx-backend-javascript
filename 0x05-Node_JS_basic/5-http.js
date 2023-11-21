@@ -52,24 +52,24 @@ const countStudents = (path) =>
 	});
 
 const app = http.createServer(async (req, res) => {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    
+	res.writeHead(200, { "Content-Type": "text/plain" });
+
 	if (req.url === "/") {
 		res.end("Hello Holberton School!");
-    } else if (req.url === "/students") {
+	} else if (req.url === "/students") {
 		try {
-            const result = await countStudents(DB_FILENAME);
-            res.write("This is the list of our students\n");
+			const result = await countStudents(DB_FILENAME);
+			res.write("This is the list of our students\n");
 			res.end(result.join("\n"));
-        } catch (error) {
-            res.write("This is the list of our students\n");
+		} catch (error) {
+			res.write("This is the list of our students\n");
 			res.end(`${error.message}`);
 		}
 	}
 });
 
-app.listen(1245, '127.0.0.1', () => {
-    console.log("Server listening on port 1245");
+app.listen(1245, "127.0.0.1", () => {
+	console.log("Server listening on port 1245");
 });
 
 module.exports = app;

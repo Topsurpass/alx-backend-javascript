@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from "fs";
 
 const readDatabase = (dataPath) =>
 	new Promise((resolve, reject) => {
