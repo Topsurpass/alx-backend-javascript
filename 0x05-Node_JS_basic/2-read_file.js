@@ -1,5 +1,9 @@
 const fs = require("fs");
 
+/**
+ *
+ * @param {string} path
+ */
 const countStudents = (path) => {
 	//if file does not exist or is not a regular file
 	if (!fs.existsSync(path) || !fs.statSync(path).isFile()) {

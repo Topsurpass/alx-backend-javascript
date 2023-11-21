@@ -1,5 +1,10 @@
 const fs = require("fs");
 
+/**
+ *
+ * @param {string} path
+ * @returns resoved promise
+ */
 const countStudents = (path) =>
 	new Promise((resolve, reject) => {
 		fs.readFile(path, "utf8", (err, data) => {

@@ -4,6 +4,11 @@ const app = express();
 
 const DB_FILENAME = process.argv.length > 2 ? process.argv[2] : "";
 
+/**
+ *
+ * @param {string} path
+ * @returns list of strings
+ */
 const countStudents = (path) =>
 	new Promise((resolve, reject) => {
 		fs.readFile(path, "utf8", (err, data) => {
