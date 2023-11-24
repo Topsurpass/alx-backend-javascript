@@ -28,15 +28,18 @@ describe("http://localhost:7865/index_page", function () {
 			done();
 		});
 	});
-	it("Get /available_payments", function (done) {
-		request.get("http://localhost:7865/", (_, res, body) => {
-			expect(res.statusCode).to.be.equal(200);
-			expect(body).to.be.equal("Welcome to the payment system");
-			done();
-		});
+	it("POST /login returns valid response", (done) => {
+		request.post(
+			"http://localhost:7865/login",
+			{ json: { userName: "Temitope" } },
+			(_err, res, body) => {
+				expect(res.statusCode).to.be.equal(200);
+				expect(body).to.be.equal("Welcome Temitope");
+				done();
+			}
+		);
 	});
-
-	it("Get client request for home page", function (done) {
+	it("Get /available_payments", function (done) {
 		request.get(
 			"http://localhost:7865/available_payments",
 			(_, res, body) => {
