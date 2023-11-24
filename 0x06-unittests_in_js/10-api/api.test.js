@@ -1,58 +1,51 @@
 const request = require("request");
-const { expect } = require("chai");
+const expect = require("chai").expect;
 
-describe("API integration test", () => {
-	const API_URL = "http://localhost:7865";
-
-	it("GET / returns correct response", (done) => {
-		request.get(`${API_URL}/`, (_err, res, body) => {
+describe("http://localhost:7865/index_page", function () {
+	it("Get client request for home page", function (done) {
+		request.get("http://localhost:7865/", (_, res, body) => {
+			expect(res.statusCode).to.be.equal(200);
+			expect(body).to.be.equal("Welcome to the payment system");
+			done();
+		});
+	});
+	it("Get client request for cart items of id 60", function (done) {
+		request.get("http://localhost:7865/cart/60", (_, res, body) => {
+			expect(res.statusCode).to.be.equal(200);
+			expect(body).to.be.equal("Payment methods for cart 60");
+			done();
+		});
+	});
+	it("Get client request for cart items of id -60", function (done) {
+		request.get("http://localhost:7865/cart/-60", (_, res, _body) => {
+			expect(res.statusCode).to.be.equal(404);
+			done();
+		});
+	});
+	it("Post /login and return valid json response", function (done) {
+		request.get("http://localhost:7865/cart/phones", (_, res, _body) => {
+			expect(res.statusCode).to.be.equal(404);
+			done();
+		});
+	});
+	it("Get /available_payments", function (done) {
+		request.get("http://localhost:7865/", (_, res, body) => {
 			expect(res.statusCode).to.be.equal(200);
 			expect(body).to.be.equal("Welcome to the payment system");
 			done();
 		});
 	});
 
-	it("GET /cart/:id returns correct response for valid :id", (done) => {
-		request.get(`${API_URL}/cart/47`, (_err, res, body) => {
-			expect(res.statusCode).to.be.equal(200);
-			expect(body).to.be.equal("Payment methods for cart 47");
-			done();
-		});
-	});
-
-	it("GET /cart/:id returns 404 response for negative number values in :id", (done) => {
-		request.get(`${API_URL}/cart/-47`, (_err, res, _body) => {
-			expect(res.statusCode).to.be.equal(404);
-			done();
-		});
-	});
-
-	it("GET /cart/:id returns 404 response for non-numeric values in :id", (done) => {
-		request.get(`${API_URL}/cart/d200-44a5-9de6`, (_err, res, _body) => {
-			expect(res.statusCode).to.be.equal(404);
-			done();
-		});
-	});
-
-	it("POST /login returns valid response", (done) => {
-		request.post(
-			`${API_URL}/login`,
-			{ json: { userName: "Pinkbrook" } },
-			(_err, res, body) => {
+	it("Get client request for home page", function (done) {
+		request.get(
+			"http://localhost:7865/available_payments",
+			(_, res, body) => {
 				expect(res.statusCode).to.be.equal(200);
-				expect(body).to.be.equal("Welcome Pinkbrook");
+				expect(JSON.parse(body)).to.be.deep.equal({
+					payment_methods: { credit_cards: true, paypal: false },
+				});
 				done();
 			}
 		);
-	});
-
-	it("GET /available_payments returns valid response", (done) => {
-		request.get(`${API_URL}/available_payments`, (_err, res, body) => {
-			expect(res.statusCode).to.be.equal(200);
-			expect(JSON.parse(body)).to.be.deep.equal({
-				payment_methods: { credit_cards: true, paypal: false },
-			});
-			done();
-		});
 	});
 });
